@@ -21,7 +21,7 @@ int findKthLargest(int[] nums, int k) {
 }
 
 int partition(int[] nums, int lo, int hi) {
-  	int i=lo+1, j=hi;
+  	int i=lo+1, j=hi;	// 注意i从pivot+1开始遍历
   	int pivot = nums[lo];
   
   	while (i <= j) {
