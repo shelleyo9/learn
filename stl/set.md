@@ -48,8 +48,10 @@ int main ()
     for (int i=1; i<10; i++) myset.insert(i*10); // 10 20 30 40 50 60 70 80 90
 
     // find iterator to lower bound which equivalent or less than arg
+    // 刚好大于等于arg的第一个元素
     itlow=myset.lower_bound (30);                //       ^
     // find iterator to upper bound which large than arg
+    // 刚好大于arg的第一个元素
     itup=myset.upper_bound (60);                 //                   ^
 
     // erase [first, last)
@@ -63,3 +65,4 @@ int main ()
 }
 ```
 
+>   A similar member function, [upper_bound](https://www.cplusplus.com/set::upper_bound), has the same behavior as `lower_bound`, except in the case that the [set](https://www.cplusplus.com/set) contains an element equivalent to *val*: In this case `lower_bound` returns an iterator pointing to that element, whereas [upper_bound](https://www.cplusplus.com/set::upper_bound) returns an iterator pointing to the next element.

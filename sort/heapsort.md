@@ -1,6 +1,17 @@
-堆排序：在数组中存储一棵树，通过数组索引快速进行树节点的遍历
+**堆排序**：
+
+**时间复杂度**：
+
+**空间复杂度**：
+
+```
+```
 
 
+
+
+
+二叉堆：在数组中存储一棵完全二叉树，通过数组索引快速进行树节点的遍历
 
 ```c++
 class MaxBinaryStack {
@@ -25,12 +36,12 @@ public:
     }
 
     void insert(int k) {
-				num[++N] = k;
+        num[++N] = k;
       	swim(N);
     }
 
     int delMax() {
-				int ret = num[1];
+        int ret = num[1];
       	swap(1, N);
       	N--;
       	sink(1);
@@ -38,14 +49,14 @@ public:
     }
 
     void swim(int i) {
-				while (i>1 && less(parent(i), i)) {	// 注意截止条件是i还有父节点
-          swap(i, parent(i));
-          i = parent(i);
+        while (i>1 && less(parent(i), i)) {	// 注意截止条件是i还有父节点
+            swap(i, parent(i));
+            i = parent(i);
         }
     }
 
     void sink(int i) {
-				while (left(i) <= N) {
+        while (left(i) <= N) {
           	int older = left(i);
           	if (right(i) <= N && less(left(i), right(i))) {	// 注意右节点的边界条件判断
               	older = right(i);

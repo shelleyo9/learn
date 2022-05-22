@@ -1,6 +1,8 @@
-快速排序：分治，类比二叉树的先序遍历，非稳定排序
+**快速排序**：分治，类比二叉树的先序遍历，非稳定排序
 
+**时间复杂度**：O(nlogn)
 
+**空间复杂度**：O(logn)，递归需要的栈空间
 
 ```c++
 /* 快速排序主函数 */
@@ -54,6 +56,58 @@ void swap(int[] nums, int i, int j) {
     int temp = nums[i];
     nums[i] = nums[j];
     nums[j] = temp;
+}
+```
+
+
+
+**快速选择算法**：基于快速排序的变种
+
+时间复杂度：O(nlogn)
+
+空间复杂度：O(logn)，递归需要的栈空间
+
+```c++
+int findKthLargest(int[] nums, int k) {
+  	int lo=0, hi=nums.size()-1, pivot;
+  
+    // 注意lo=hi时，也有可能就是最终的pivot
+  	while (lo <= hi) {
+      	pivot = partition(nums, 0, nums.size()-1);
+        if (k == pivot) {
+            return nums[spivot];
+        } else if (k > pivot) {
+            lo = pivot + 1;
+        } else {
+            hi = pivot -1;
+        }
+    }
+  
+    return -1;
+}
+
+
+int partition(vector<int>& nums, int lo, int hi) {
+    if (lo == hi) {
+        return lo;
+    }
+    int pivot=lo;
+    int i=lo, j=hi+1;
+
+    while (true) {
+        while (nums[++i] <= nums[pivot]) {
+            if (i == hi) break;
+        }
+        while (nums[--j] > nums[pivot]) {
+            if (j == lo) break;
+        }
+        if (i >= j) {
+            break;
+        }
+        swap(nums[i], nums[j]);
+    }
+    swap(nums[pivot], nums[j]);
+    return j;
 }
 ```
 
